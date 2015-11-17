@@ -1,10 +1,10 @@
 # Cracking
 Mike's Cracking the Coding Interview Java Answers 
 
-Done
+Finished
+* Ch1
 
 WIP
-* Ch1
 * Ch2
 * Ch3
 * Ch4
