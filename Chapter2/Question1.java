@@ -42,18 +42,15 @@ public class Question1 {
 		}else{
 			Hashtable<Integer, Boolean> ht = new Hashtable<Integer, Boolean>();
 			Node n = head;
-			ht.put(n.val, true);
-			while(n!=null && n.next!=null){
-				if(ht.get(n.next.val)){
-					//skip
-					n.next=n.next.next;
-					n=n.next;
-				}
-				else{
-					//add 
+			Node prev = null;
+			while(n!=null){
+				if(ht.containsKey(n.val)){
+					prev.next=n.next;
+				}else{
 					ht.put(n.val, true);
-					n=n.next;
+					prev = n;
 				}
+				n=n.next;
 			}
 			return head;
 		}
