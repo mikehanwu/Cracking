@@ -29,6 +29,14 @@ public class Question1 {
 		pt(removeDup(ll5)); //0,1
 		pt(removeDup(ll6)); //0,1,2,3,4,5,6
 		pt(removeDup(ll7)); //0,1,2,3,4,5,6
+		
+		pt(removeDup2(ll1)); //0
+		pt(removeDup2(ll2)); //0
+		pt(removeDup2(ll3)); //0,1
+		pt(removeDup2(ll4)); //0
+		pt(removeDup2(ll5)); //0,1
+		pt(removeDup2(ll6)); //0,1,2,3,4,5,6
+		pt(removeDup2(ll7)); //0,1,2,3,4,5,6
 
 	}
 	
@@ -48,6 +56,29 @@ public class Question1 {
 					prev.next=n.next;
 				}else{
 					ht.put(n.val, true);
+					prev = n;
+				}
+				n=n.next;
+			}
+			return head;
+		}
+	}
+	
+	public static Node removeDup2(Node head){
+		if(head == null){
+			return null;
+		}
+		if(head.size() == 0 ){
+			return head;
+		}else{
+			int numUniqueElems = 0;
+			Node n = head;
+			Node prev = null;
+			while(n!=null){
+				if(head.containsSoFar(n.val, numUniqueElems)){
+					prev.next=n.next;
+				}else{
+					numUniqueElems++;
 					prev = n;
 				}
 				n=n.next;
@@ -103,5 +134,14 @@ class Node{
 			n=n.next;
 		}
 		return size;
+	}
+	
+	public boolean containsSoFar(int val, int numUniqueElems){
+		Node n = this;
+		for(int i = 0; i<numUniqueElems; i++){
+			if(n.val==val)
+				return true;
+		}
+		return false;
 	}
 }
